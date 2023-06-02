@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,7 +18,6 @@ const Form = (props) => {
         setMain(ingredient);
         setIngredient("");
 
-
     };
 
     return (
@@ -33,7 +33,7 @@ const Form = (props) => {
                 <option value="Fish">Fish</option>
                 <option value="Shrimp">Shrimp</option>
             </select>
-            <input type="submit" value="submit" onClick={handleSubmit} />
+            <Link to={{ pathname: "/recipes" }}><input type="submit" value="submit" onClick={handleSubmit} /></Link>
         </>
     );
 
