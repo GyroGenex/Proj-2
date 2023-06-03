@@ -7,14 +7,15 @@ import DetailedRecipe from './components/DetailedRecipe';
 
 function App() {
   const [main, setMain] = useState("");
+  const [time, setTime] = useState("");
 
 
   return (
     <div className="App">
       <main>
         <Routes>
-          <Route exact path="/" element={<Form setMain={setMain} ></Form>} />
-          <Route path="/recipes" element={<Table main={main} />} />
+          <Route exact path="/" element={<Form setMain={setMain} setTime={setTime} time={time}></Form>} />
+          <Route path="/recipes" element={<Table main={main} time={time} />} />
 
           <Route path="/recipes/:recipe" element={<DetailedRecipe />} />
         </Routes>

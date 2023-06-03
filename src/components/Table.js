@@ -4,7 +4,7 @@ import Recipe from './Recipe';
 import { Link } from 'react-router-dom';
 
 const Table = (props) => {
-    const { main } = props;
+    const { main, time } = props;
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
@@ -19,11 +19,17 @@ const Table = (props) => {
                 .then((res) => res.json())
                 .then((data) => {
                     console.log("Recipes", data);
-                    setRecipes(data);
+                    setRecipes(data.filter(recipe => Number(recipe["Time Taken"]) <= Number(time)));
                 });
+
+
         };
         makeApiCall();
+
+
     }, [main]);
+
+
 
     return (recipes.length > 0 && (
         <>

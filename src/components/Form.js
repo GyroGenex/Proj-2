@@ -4,18 +4,23 @@ import { Link } from 'react-router-dom';
 
 
 const Form = (props) => {
-    const { setMain } = props;
+    const { time, setMain, setTime } = props;
 
     const [ingredient, setIngredient] = useState("");
 
-    const handleChange = (event) => {
+
+    const handleIngredientChange = (event) => {
         setIngredient(event.target.value);
 
     };
 
-    const handleSubmit = () => {
+    const handleTimeChange = (event) => {
+        setTime(event.target.value);
+    };
 
+    const handleSubmit = () => {
         setMain(ingredient);
+        setTime(time);
         setIngredient("");
 
     };
@@ -23,7 +28,7 @@ const Form = (props) => {
     return (
         <>
             <h1>Select your main ingredient</h1>
-            <select type="text" value={ingredient} onChange={handleChange} placeholder="What's in Your Fridge?">
+            <select type="text" value={ingredient} onChange={handleIngredientChange} placeholder="What's in Your Fridge?">
                 <option value="">Select an ingredient</option>
                 <option value="Flour">Flour</option>
                 <option value="Beef">Beef</option>
@@ -33,6 +38,7 @@ const Form = (props) => {
                 <option value="Fish">Fish</option>
                 <option value="Shrimp">Shrimp</option>
             </select>
+            <input type="text" value={time} onChange={handleTimeChange} placeholder="maximum time" />
             <Link to={{ pathname: "/recipes" }}><input type="submit" value="submit" onClick={handleSubmit} /></Link>
         </>
     );
